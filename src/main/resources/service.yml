@@ -1,0 +1,32 @@
+server:
+  rootPath: /api
+
+jwt:
+  jwtSecret: super secret yeaaasdasd
+  jwtExpirySeconds: 259200
+  cookieName: jwtToken
+
+# Database settings.
+database:
+
+  # the name of your JDBC driver
+  driverClass: com.mysql.cj.jdbc.Driver
+
+  # the username
+  user: root
+
+  # the newPassword
+  password: root
+
+  # the JDBC URL
+  url: jdbc:mysql://localhost:3306/webdev?serverTimezone=UTC
+
+logging:
+  level: INFO
+  loggers:
+    "org.skife.jdbi.v2": TRACE
+
+passwordManagement:
+  bcryptCost: 10
+
+indexPagePath: "assets/index.html"
