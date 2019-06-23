@@ -1,0 +1,55 @@
+<section class="md-whiteframe-z1" style="margin:21px;">
+    <md-content ng-controller="leaderboardController as vm">
+        <div layout="row" layout-align="center center" style="height: 100%;" ng-show="vm.loading">
+            <md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
+        </div>
+
+        <div layout="row" layout-align="center center" ng-show="!vm.loading && vm.showCountdown">
+            <p>{{vm.countdown}}</p>
+        </div>
+
+        <div layout="row" layout-align="center center" ng-show="!vm.loading && vm.showTimer">
+            <p>{{vm.timer}}</p>
+        </div>
+
+        <md-content ng-show="!vm.loading && vm.showMatchData" class="md-padding" layout="row" layout-wrap>
+            <div flex="33" ng-repeat="match in matchData">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{match.id}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <md-list>
+                            <md-list-item ng-repeat="name in match.users">
+                                <p>{{name}}</p>
+                            </md-list-item>
+                        </md-list>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+
+        <div ng-show="!vm.loading">
+            <md-toolbar class="md-warn md-toolbar-tools" layout="row" layout-align="center center">
+                <h2 class="md-flex">Leaderboard</h2>
+            </md-toolbar>
+
+            <div layout="row" ng-show="vm.users.length == 0" layout-padding>
+                <p>No users are on the leaderboard yet</p>
+            </div>
+
+            <div layout="column" ng-show="vm.users.length > 0">
+                <md-list>
+                    <md-list-item ng-repeat="(displayName, score) in vm.users">
+                        <div class="md-list-item-text"
+                             ng-style="{'text-align': 'left'}">
+                            <p>{{displayName}} - {{score}}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </div>
+    </md-content>
+</section>

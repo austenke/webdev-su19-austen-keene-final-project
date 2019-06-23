@@ -1,0 +1,59 @@
+<div ng-controller="registrationController as vm" layout="row" layout-align="center none"
+     ng-cloak class="md-inline-form" style="width: 100%" layout-padding>
+    <md-content md-whiteframe="3" flex="70">
+        <md-toolbar md-scroll-shrink>
+            <div layout-align="center center" class="md-toolbar-tools">HighGround Registration</div>
+        </md-toolbar>
+
+        <div layout="column" layout-align="center center" ng-show="vm.registrationComplete"
+             ng-class="vm.registerCompleteAnimation" style="margin-top: 10px">
+            <md-icon md-svg-src="img/check.svg" style="height: 40px; width: 40px; color: green;"></md-icon>
+            <div layout="row" layout-align="center center">
+                <p>Registration completed! Redirecting you to the home page.</p>
+            </div>
+        </div>
+        <md-progress-linear md-mode="query" ng-disabled="!vm.loading"></md-progress-linear>
+
+        <form name="userForm" style="margin-top: 20px" ng-submit="vm.register()"
+              ng-class="vm.registerAnimation" ng-hide="vm.registrationComplete" >
+            <div layout="row">
+                <md-input-container class="md-block" flex="80" flex-offset="10">
+                    <label>HighGround Username</label>
+                    <input name="displayName" required md-maxlength="20" minlength="3" ng-model="vm.user.displayName">
+                    <div ng-messages="userForm.displayName.$error" ng-show="userForm.displayName.$dirty">
+                        <div ng-message="required">This is required!</div>
+                        <div ng-message="md-maxlength">That's too long!</div>
+                        <div ng-message="minlength">That's too short!</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container class="md-block" flex="40" flex-offset="10">
+                    <label>Email</label>
+                    <input name="email" required ng-maxlength="100" ng-model="vm.user.email" ng-change="vm.validateEmail(userForm)">
+                    <div ng-messages="userForm.email.$error" ng-show="userForm.email.$dirty">
+                        <div ng-message="required">This is required!</div>
+                        <div ng-message="ng-maxlength">That's too long!</div>
+                        <div ng-message="emailEdu">Please use your .edu email</div>
+                        <div ng-message="malformed">Email address is not correctly formatted</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex="35" flex-offset="5">
+                    <label>Password</label>
+                    <input name="password" required maxlength="100" minlength="8" ng-model="vm.user.password" type="password">
+                    <div ng-messages="userForm.password.$error" ng-show="userForm.password.$dirty">
+                        <div ng-message="required">This is required!</div>
+                        <div ng-message="md-maxlength">That's too long!</div>
+                        <div ng-message="minlength">That's too short!</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-button type="submit" class="md-raised md-primary"
+                           flex="60" flex-offset="20">
+                    Register
+                </md-button>
+            </div>
+        </form>
+    </md-content>
+</div>

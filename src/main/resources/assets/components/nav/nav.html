@@ -1,0 +1,48 @@
+<md-nav-bar md-no-ink-bar="disableInkBar"
+            md-selected-nav-item="vm.currentNavItem"
+            nav-bar-aria-label="navigation">
+    <md-nav-item md-nav-href="/" name="/">Home</md-nav-item>
+    <md-nav-item ng-show="vm.loggedIn && vm.emailVerified" md-nav-href="/play" name="/play">Play</md-nav-item>
+    <span flex></span>
+    <md-menu md-position-mode="target-right target" md-offset="2000 80">
+        <div layout>
+            <p ng-show="vm.loggedIn">
+                Welcome {{vm.userName}}!
+            </p>
+            <md-button class="md-button no-hover" ng-click="vm.goToSettings()" ng-show="vm.loggedIn" style="min-width: 30px">
+                <md-icon md-svg-icon="img/settings.svg"></md-icon>
+            </md-button>
+            <md-button class="md-button no-hover" ng-click="vm.logOut()" ng-show="vm.loggedIn" style="min-width: 30px">
+                <md-icon md-svg-icon="img/exit.svg"></md-icon>
+            </md-button>
+            <md-button class="md-button no-hover" ng-click="$mdMenu.open($event)" ng-hide="vm.loggedIn" style="text-transform:uppercase;font-weight:500;font-size:14px;font-style:inherit; background: none;
+                        font-variant:inherit;font-family:inherit;text-decoration:none;">
+                Log in / Register
+                <i class="fa fa-caret-down"></i>
+            </md-button>
+        </div>
+        <md-menu-content layout="column" width=4>
+            <div style="text-align: center; width: 100%;">
+                <p style="font-size: 18px; margin: 10px;">Log in</p>
+            </div>
+            <md-divider></md-divider>
+            <md-menu-item layout-padding>
+                <md-input-container class="md-block" flex="100" md-no-float>
+                    <input placeholder="Email" required maxlength="100" ng-model="vm.login.email">
+                </md-input-container>
+            </md-menu-item>
+            <md-menu-item layout-padding style="padding-top: 0px;">
+                <md-input-container class="md-block" style="padding-top: 0px;" flex="100" md-no-float>
+                    <input placeholder="Password" required maxlength="100" ng-model="vm.login.password" type="password">
+                </md-input-container>
+            </md-menu-item>
+            <md-menu-item>
+                <div layout="row">
+                    <md-button clas="md-primary" ng-click="vm.goToRegister()">Register</md-button>
+                    <span flex></span>
+                    <md-button flex="40" class="md-raised md-primary" ng-click="vm.logIn()">Log in</md-button>
+                </div>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+</md-nav-bar>

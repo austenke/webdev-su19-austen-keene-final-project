@@ -1,0 +1,61 @@
+<html>
+    <head>
+
+        <base href="/" />
+
+        <title>HighGround</title>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+        <!-- Angular.js Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js"></script>
+        <script src="https://cdn.rawgit.com/AngularClass/angular-websocket/v2.0.0/dist/angular-websocket.min.js"></script>
+
+        <!-- Angular Material -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+
+        <script src="js/moment.js"></script>
+        <script src="app.js"></script>
+        <script src="components/leaderboard/leaderboard.js"></script>
+        <script src="components/sidenav/sidenav.js"></script>
+        <script src="components/register/register.js"></script>
+        <script src="components/settings/settings.js"></script>
+        <script src="components/nav/nav.js"></script>
+        <script src="components/home/home.js"></script>
+        <script src="factories/userFactory.js"></script>
+        <script src="factories/lobbyFactory.js"></script>
+        <script src="factories/socketFactory.js"></script>
+
+        <!-- Angular Material style sheet -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+
+        <link rel="stylesheet" href="animate.css">
+        <link rel="stylesheet" href="main.css">
+
+
+        <link rel="icon" href="favicon.ico?" type="image/x-icon">
+
+        <script src="https://use.fontawesome.com/ecc40b70bc.js"></script>
+    </head>
+    <body ng-app="EthChat">
+        <md-content layout="column" ng-cloak>
+            <md-content class="md-padding"
+                        ng-controller="navController as vm"
+                        ng-include="'components/nav/nav.html'">
+            </md-content>
+
+            <div class="container">
+                <section layout="row" flex ng-view="">
+                </section>
+            </div>
+        </md-content>
+    </body>
+</html>

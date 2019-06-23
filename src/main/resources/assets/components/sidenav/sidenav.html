@@ -1,0 +1,26 @@
+<md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Match Lobby</h1>
+</md-toolbar>
+<md-content ng-controller="sidenavController as vm" flex layout-padding>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <p>{{$root.status}}</p>
+    </section>
+
+    <md-list flex class="chatRoomList">
+        <md-list-item>
+            <div class="md-list-item-text" layout="column">
+                <h3 style="margin-bottom: 0;">Connected Users:</h3>
+            </div>
+        </md-list-item>
+        <md-list-item ng-repeat="displayName in $root.lobbyUsers">
+            <div class="md-list-item-text" layout="column">
+                <p>{{displayName}}</p>
+            </div>
+        </md-list-item>
+    </md-list>
+    <div>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary md-hue-1" ng-click="vm.showTimestampDialog()">Add match</md-button>
+        </section>
+    </div>
+</md-content>

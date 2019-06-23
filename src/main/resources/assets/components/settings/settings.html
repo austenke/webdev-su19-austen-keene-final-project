@@ -1,0 +1,84 @@
+<section layout="column" class="md-whiteframe-z1" style="margin:21px; width: 100%; display: flex;" layout-padding>
+    <div ng-controller="settingsController as vm" layout="row" layout-xs="column">
+        <md-content md-whiteframe="3" flex="45" ng-class="vm.linkAnimation" ng-show="true">
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">Link Account</div>
+            </md-toolbar>
+
+            <div layout="column">
+                <form name="linkForm" style="margin-top: 20px" ng-submit="vm.linkAccount()">
+                    <div layout="row">
+                        <md-input-container class="md-block" flex="60" flex-offset="20">
+                            <label>Epic Username</label>
+                            <input name="epicName" required maxlength="100" ng-model="vm.settings.epicName">
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container class="md-block" flex="60" flex-offset="20" style="margin-bottom: 0px">
+                            <label>Current email</label>
+                            <input ng-model="vm.settings.currentEmail" disabled>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-button type="submit" flex="45" flex-offset="30" ng-hide="vm.waitForLink"
+                                   class="md-raised md-primary" flex="30">Link Account</md-button>
+                        <p ng-show="vm.waitForLink">You will receive a request from {{vm.botName}}. Please accept the
+                            request and send the bot the following message: {{vm.challenge}}</p>
+                    </div>
+                </form>
+            </div>
+        </md-content>
+        <span flex></span>
+        <md-content md-whiteframe="3" flex="45" ng-class="vm.linkAnimation" ng-show="true">
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">Change Email</div>
+            </md-toolbar>
+
+            <div layout="column">
+                <form name="linkForm" style="margin-top: 20px" ng-submit="">
+                    <div layout="row">
+                        <md-input-container class="md-block" flex="60" flex-offset="20" style="margin-bottom: 0px">
+                            <label>Current email</label>
+                            <input ng-model="vm.settings.currentEmail" disabled>
+                        </md-input-container>
+                        <div layout="column" ng-show="vm.settings.emailVerified">
+                            <div layout="row" layout-align="center center">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                <p style="font-size: 12px;">Account verified</p>
+                            </div>
+                        </div>
+                        <div layout="column" ng-hide="vm.settings.emailVerified">
+                            <div layout="row" layout-align="center center">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                <p style="font-size: 12px;">Account not verified</p>
+                            </div>
+                        </div>
+                    </div>
+                    <md-input-container class="md-block" flex="60" flex-offset="20" style="margin-top: 0px">
+                        <label>Change email</label>
+                        <input name="email" required maxlength="100" ng-model="vm.settings.newEmail">
+                        <div ng-messages="linkForm.epicName.$error" ng-show="linkForm.epicName.$dirty">
+                            <div ng-message="required">This is required!</div>
+                            <div ng-message="md-maxlength">That's too long!</div>
+                        </div>
+                    </md-input-container>
+                    <div layout="row">
+                        <md-button type="submit" flex="40" flex-offset="30"
+                                   class="md-raised md-primary" flex="30">Change Email</md-button>
+                    </div>
+                </form>
+            </div>
+        </md-content>
+    </div>
+
+
+    <!--<div flex="60" flex-offset="5">-->
+    <!--<md-progress-circular ng-show="vm.linkingEpicAccount" md-mode="indeterminate"></md-progress-circular>-->
+    <!--<div ng-show="vm.waitingForMessage">A friend request has been sent to your account. Please add-->
+    <!--the bot and message it the following challenge message: {{vm.challengeCode}}</div>-->
+    <!--</div>-->
+</section>

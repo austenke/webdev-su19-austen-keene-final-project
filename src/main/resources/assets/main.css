@@ -1,0 +1,46 @@
+.chatRoomList {
+    padding-top: 0;
+}
+
+.leaderboardContainer {
+    width: 100%;
+}
+
+.message-box {
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.chatDivider {
+    border-top-width: 3px;
+}
+
+.chatBar {
+    height: 5%;
+    margin-top: 3px;
+    margin-left: 15px;
+}
+
+.chatIcon {
+    margin-top: 12px;
+    margin-right: 5px;
+}
+
+md-dialog .md-dialog-content {
+    padding-bottom: 0;
+}
+
+.md-list-item-text h3.messageUsername.ng-binding {
+    margin: 5px 0 0 0;
+}
+
+.md-button:not([disabled]).md-focused {
+    background-color: rgba(158,158,158,0);
+}
+
+.emailVerifyToast {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
